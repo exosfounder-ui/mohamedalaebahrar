@@ -14,7 +14,7 @@
     html,body{margin:0;height:100%}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);background:linear-gradient(180deg,var(--bg) 0%,#0e1218 100%)}
     /* MATRIX GIF background */
-    body::before{content:"";position:fixed;inset:0;background:url('files/matrix.gif') center/cover no-repeat fixed;opacity:.18;pointer-events:none;filter:contrast(110%) saturate(120%)}
+    body::before{content:"";position:fixed;inset:0;background:url('files/matrix.gif') center/cover no-repeat fixed;opacity:.20;pointer-events:none;filter:contrast(115%) saturate(120%)}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1200px;margin:0 auto;padding:24px}
     header{position:sticky;top:0;z-index:40;background:rgba(11,12,15,.72);backdrop-filter:blur(8px);border-bottom:1px solid #1b2230}
@@ -50,7 +50,7 @@
     @media (max-width:900px){.hero{grid-template-columns:1fr}.cols{grid-template-columns:1fr}}
     /* round profile with neon ring */
     .avatar{width:140px;height:140px;border-radius:999px;object-fit:cover;border:3px solid rgba(0,208,132,.6);box-shadow:0 0 0 4px rgba(0,208,132,.18),0 0 40px rgba(0,208,132,.22)}
-    /* Subtabs inside Engineering */
+    /* Subtabs component */
     .subtabs{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
     .tabbtn{padding:8px 12px;border-radius:999px;border:1px solid #2b2f3a;background:#0d1016;color:#dfe7ff;cursor:pointer}
     .tabbtn.active{border-color:#00d084;background:#0b1614}
@@ -108,14 +108,13 @@
             </div>
           </div>
         </div>
-        <p class="mono" style="opacity:.7;margin-top:10px">→ Add your photo file as <code>files/profile.jpg</code> (square recommended, ~600×600).</p>
       </div>
     </div>
 
     <!-- PAGES -->
     <section id="home" class="page active">
       <div class="card">
-        <h2>Welcome</h2>
+        <h2>Overview</h2>
         <p>Thanks for visiting my ePortfolio. I’m an engineering student at ENSEEIHT (3EA). This website gathers my curriculum, international mobility goals, civic involvement and activities. Feel free to download my CVs (FR/EN) and reach out.</p>
       </div>
     </section>
@@ -123,13 +122,16 @@
     <section id="engineering" class="page">
       <div class="card">
         <h2>Engineering Course</h2>
-        <p>I’m currently studying for a diploma in electrical engineering. We follow a common core covering all the subjects listed below; this page will be updated each semester.</p>
-        <div class="subtabs">
-          <button class="tabbtn active" data-sub="ec-courses">Courses (S5)</button>
-          <button class="tabbtn" data-sub="ec-langs">Languages</button>
-          <button class="tabbtn" data-sub="ec-pending">More (coming soon)</button>
+        <p>I’m currently studying for a diploma in electrical engineering. We follow a common core covering all the subjects; this page will be updated each semester.</p>
+
+        <div class="subtabs" data-group="eng">
+          <button class="tabbtn active" data-sub="eng-courses">Courses (S5)</button>
+          <button class="tabbtn" data-sub="eng-langs">Languages</button>
+          <button class="tabbtn" data-sub="eng-projects">Projects (à venir)</button>
+          <button class="tabbtn" data-sub="eng-productions">Productions (à venir)</button>
         </div>
-        <div id="ec-courses" class="subpage active">
+
+        <div class="subpage active" id="eng-courses">
           <div class="card" style="margin-top:10px">
             <h3>S5 (current)</h3>
             <ul>
@@ -142,17 +144,21 @@
             </ul>
           </div>
         </div>
-        <div id="ec-langs" class="subpage">
+
+        <div class="subpage" id="eng-langs">
           <div class="langgrid">
             <div class="langcard"><h3 style="margin-top:0">Arabic <small style="opacity:.7">— Native</small></h3><div class="bar"><span style="width:100%"></span></div></div>
             <div class="langcard"><h3 style="margin-top:0">French <small style="opacity:.7">— Advanced</small></h3><div class="bar"><span style="width:85%"></span></div></div>
             <div class="langcard"><h3 style="margin-top:0">English <small style="opacity:.7">— Advanced</small></h3><div class="bar"><span style="width:85%"></span></div></div>
-            <div class="langcard"><h3 style="margin-top:0">Spanish <small style="opacity:.7">— Basic</small></h3><div class="bar"><span style="width:40%"></span></div></div>
+            <div class="langcard"><h3 style="margin-top:0">Spanish (LV2) <small style="opacity:.7">— Basic, in progress</small></h3><div class="bar"><span style="width:40%"></span></div></div>
           </div>
-          <p class="mono" style="opacity:.7;margin-top:8px">(Proficiency shown as signal bars.)</p>
         </div>
-        <div id="ec-pending" class="subpage">
-          <div class="card" style="margin-top:10px"><p>Additional sub‑tabs (projects, productions, etc.) will be added as I progress — <em>coming soon</em>.</p></div>
+
+        <div class="subpage" id="eng-projects">
+          <div class="card" style="margin-top:10px"><p>Academic projects will be listed here as they are completed. <em>À venir.</em></p></div>
+        </div>
+        <div class="subpage" id="eng-productions">
+          <div class="card" style="margin-top:10px"><p>Deliverables, reports and code repositories. <em>À venir.</em></p></div>
         </div>
       </div>
     </section>
@@ -160,7 +166,26 @@
     <section id="mobility" class="page">
       <div class="card">
         <h2>International Mobility</h2>
-        <p>As an international student in France, I value cultural openness and multilingual environments. Mobility opportunities include Europe (ERASMUS), Canada (Montréal, Québec, Sherbrooke) and the USA (Georgia Tech), via ENSEEIHT’s exchange and double‑degree agreements. I plan to apply in the coming semesters.</p>
+        <p>As an international student in France, I value cultural openness and multilingual environments. Mobility opportunities include Europe (ERASMUS), Canada (Montréal, Québec, Sherbrooke) and the USA (Georgia Tech), via ENSEEIHT’s exchange and double‑degree agreements.</p>
+
+        <div class="subtabs" data-group="mob">
+          <button class="tabbtn active" data-sub="mob-overview">Overview</button>
+          <button class="tabbtn" data-sub="mob-lv2">LV2 (Spanish)</button>
+          <button class="tabbtn" data-sub="mob-pce">PCE / Exchange (à venir)</button>
+        </div>
+
+        <div class="subpage active" id="mob-overview">
+          <div class="card" style="margin-top:10px"><p>I plan to apply for exchange programs in the next semesters. Priority tracks: EU ERASMUS and Canada.</p></div>
+        </div>
+        <div class="subpage" id="mob-lv2">
+          <div class="card" style="margin-top:10px">
+            <h3>LV2 – Spanish</h3>
+            <p>Goal: improve to B1–B2 for academic and mobility purposes. Practice plan: weekly speaking groups + focused grammar/vocab sets.</p>
+          </div>
+        </div>
+        <div class="subpage" id="mob-pce">
+          <div class="card" style="margin-top:10px"><p>Documents and selections for PCE / exchange applications will be gathered here. <em>À venir.</em></p></div>
+        </div>
       </div>
     </section>
 
@@ -172,11 +197,25 @@
           <a class="btn" href="files/CV_FR.pdf" download>📄 CV – French</a>
           <a class="btn" href="files/CV_EN.pdf" download>📄 CV – English</a>
         </div>
-      </div>
-      <div class="card" style="margin-top:16px">
-        <h3>Video</h3>
-        <video controls preload="metadata" src="files/intro.mp4"></video>
-        <p class="mono" style="color:#9fb0c9;margin-top:6px">Place your video at <code>files/intro.mp4</code> (≤ 4 min).</p>
+
+        <div class="subtabs" data-group="car">
+          <button class="tabbtn active" data-sub="car-about">About me</button>
+          <button class="tabbtn" data-sub="car-intern">Internships (à venir)</button>
+          <button class="tabbtn" data-sub="car-pep">PEP (à venir)</button>
+        </div>
+
+        <div class="subpage active" id="car-about">
+          <div class="card" style="margin-top:10px">
+            <h3>About me</h3>
+            <video controls preload="metadata" src="files/intro.mp4" style="max-width:420px;width:100%;border-radius:12px;border:1px solid #1c2332"></video>
+          </div>
+        </div>
+        <div class="subpage" id="car-intern">
+          <div class="card" style="margin-top:10px"><p>Internship experiences and reports will appear here. <em>À venir.</em></p></div>
+        </div>
+        <div class="subpage" id="car-pep">
+          <div class="card" style="margin-top:10px"><p>Personal/Professional Project (PEP): objectives, timeline and deliverables. <em>À venir.</em></p></div>
+        </div>
       </div>
     </section>
 
@@ -186,7 +225,7 @@
         <p>I believe in useful, concrete actions. Recent involvements include:</p>
         <ul>
           <li>Peer‑mentoring for new students (orientation, study methods, exam prep).</li>
-          <li>Health‑quality awareness inspired by my MQSS training (risk mapping basics, patient journey focus).</li>
+          <li>Health‑quality awareness inspired by MQSS training (risk mapping basics, patient journey focus).</li>
           <li>Student community support: organizing revision groups and sports activities to promote well‑being.</li>
         </ul>
         <p>Leadership to me means clarity, responsibility and service to the team. I plan to volunteer in education or digital inclusion when possible.</p>
@@ -225,9 +264,23 @@
     links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();show(a.dataset.page)}));
     window.addEventListener('hashchange',()=>{const p=location.hash.slice(1)||'home';show(p)});show(location.hash.slice(1)||'home');
 
-    // Subtabs (Engineering)
-    const tbtns=document.querySelectorAll('.tabbtn');
-    tbtns.forEach(b=>b.addEventListener('click',()=>{tbtns.forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.subpage').forEach(p=>p.classList.remove('active'));document.getElementById(b.dataset.sub).classList.add('active')}));
+    // Subtabs (scoped per group)
+    document.querySelectorAll('.subtabs').forEach(group=>{
+      const id=group.getAttribute('data-group');
+      const buttons=group.querySelectorAll('.tabbtn');
+      buttons.forEach(btn=>btn.addEventListener('click',()=>{
+        // toggle active button
+        buttons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        // hide all subpages in this section
+        const container=group.parentElement; // the card
+        container.querySelectorAll('.subpage').forEach(sp=>sp.classList.remove('active'));
+        // show the requested one
+        const targetId=btn.dataset.sub;
+        const el=document.getElementById(targetId);
+        if(el) el.classList.add('active');
+      }));
+    });
 
     // Simple i18n
     const t={en:{role:'Student Engineer',loc:'Toulouse, France',welcome:'Welcome 👋',lead:'I love learning, improving and pushing my limits. I fully commit to what I undertake.',cvfr:'CV in French',cven:'CV in English',contact:'Contact me'},fr:{role:'Étudiant ingénieur',loc:'Toulouse, France',welcome:'Bienvenue 👋',lead:"J’aime apprendre, évoluer et dépasser mes limites. Je m’investis pleinement dans ce que j’entreprends.",cvfr:'CV – Français',cven:'CV – Anglais',contact:'Me contacter'}};
@@ -240,3 +293,4 @@
   </script>
 </body>
 </html>
+
