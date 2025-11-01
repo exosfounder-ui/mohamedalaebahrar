@@ -3,294 +3,356 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mohamed Alae Bahrar – Portfolio</title>
-  <meta name="description" content="Engineering course, mobility, career, civic engagement & activities." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <title>Mohamed Alae Bahrar – ePortfolio</title>
+  <meta name="description" content="ePortfolio – Engineering student at ENSEEIHT (3EA). Curriculum, international mobility, civic engagement & activities." />
+  <link rel="preload" as="image" href="files/matrix.gif">
+  <link rel="preload" as="image" href="files/profile.jpg">
   <style>
-    :root{--bg:#0b0c0f;--bg2:#0f1117;--muted:#a7adbe;--text:#e8e9ee;--brand:#00d084;--brand2:#1de9b6;--card:#111419;--line:#203040;--ring:#2b90d9}
+    :root{
+      --bg:#0b0f12; --surface:#0f1419; --muted:#9aa4ad; --text:#e8edf2; --brand:#18b07a;
+      --ring:#22e4a3; --card:#11161c; --edge:#1b222b; --btn:#162029; --btnh:#1c2a36;
+      --chip:#17222c; --chipb:#243240;
+    }
     *{box-sizing:border-box}
-    html,body{margin:0;height:100%}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);background:linear-gradient(180deg,var(--bg) 0%,#0e1218 100%)}
-    /* MATRIX GIF background */
-    body::before{content:"";position:fixed;inset:0;background:url('files/matrix.gif') center/cover no-repeat fixed;opacity:.20;pointer-events:none;filter:contrast(115%) saturate(120%)}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1200px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;z-index:40;background:rgba(11,12,15,.72);backdrop-filter:blur(8px);border-bottom:1px solid #1b2230}
-    .top{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
-    .brand{display:flex;gap:10px;align-items:center}
-    .dot{width:10px;height:10px;border-radius:999px;background:var(--brand2)}
-    .brand h1{font-size:18px;margin:0;font-weight:800;letter-spacing:.2px}
-    nav{display:flex;gap:22px;align-items:center}
-    nav a{font-size:13px;letter-spacing:.04em;color:#d7dbe9;opacity:.85;border-bottom:2px solid transparent;padding:8px 0}
-    nav a.active{color:#eaf2ff;border-color:var(--brand2)}
-    .lang{display:flex;gap:6px;margin-left:8px}
-    .lang button{cursor:pointer;background:#0f1117;border:1px solid #263246;color:#cfd6e8;padding:6px 10px;border-radius:999px;font-size:12px}
-    .lang button.active{outline:2px solid var(--ring);color:#fff}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;padding:28px 0}
-    .hero-card{background:linear-gradient(180deg,#0f1117 0%,#0c1016 100%);border:1px solid #1f2733;border-radius:18px;padding:18px;position:relative}
-    .chip{display:inline-block;border:1px solid #2b2f3a;color:#a9adba;padding:6px 10px;border-radius:999px;font-size:12px}
-    .title{font-family:"Playfair Display",serif;font-weight:800;letter-spacing:.2px;font-size:clamp(28px,5vw,44px);margin:6px 0 6px}
-    .lead{color:var(--muted);line-height:1.7}
-    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#0d1016;border:1px solid #2b2f3a;color:#e8e9ee;padding:10px 14px;border-radius:12px;font-weight:600}
-    .btn.primary{background:#0f6b57;border-color:#0d5a4a}
-    .btn:hover{border-color:#3a79b3}
-    section.page{display:none;animation:.5s ease both fadeIn}
-    section.page.active{display:block}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-    .card{background:rgba(17,20,25,.9);border:1px solid #1c2332;border-radius:18px;padding:22px}
-    h2{font-family:"Playfair Display",serif;margin:0 0 10px;font-size:clamp(22px,3.5vw,34px)}
-    h3{margin:10px 0 6px;font-size:18px}
-    p{color:#c6ccda;line-height:1.75}
-    .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .mono{font-family:ui-monospace,Menlo,Consolas,monospace}
-    footer{border-top:1px solid #1b2230;color:#9aa1b5;margin-top:26px;padding:20px 24px;text-align:center;font-size:13px}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.cols{grid-template-columns:1fr}}
-    /* round profile with neon ring */
-    .avatar{width:140px;height:140px;border-radius:999px;object-fit:cover;border:3px solid rgba(0,208,132,.6);box-shadow:0 0 0 4px rgba(0,208,132,.18),0 0 40px rgba(0,208,132,.22)}
-    /* Subtabs component */
-    .subtabs{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
-    .tabbtn{padding:8px 12px;border-radius:999px;border:1px solid #2b2f3a;background:#0d1016;color:#dfe7ff;cursor:pointer}
-    .tabbtn.active{border-color:#00d084;background:#0b1614}
-    .subpage{display:none;margin-top:10px}
-    .subpage.active{display:block}
-    /* language bars */
-    .langgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .langcard{background:rgba(9,12,16,.7);border:1px solid #233041;border-radius:14px;padding:14px}
-    .bar{height:8px;border-radius:8px;background:#0a1419;border:1px solid #263246;overflow:hidden}
-    .bar>span{display:block;height:100%;background:linear-gradient(90deg,#00d084,#1de9b6)}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+      color:var(--text); background:var(--bg);
+    }
+    /* Matrix background */
+    .bg{
+      position:fixed; inset:0; z-index:-2;
+      background:#000 url("files/matrix.gif") center/cover no-repeat fixed;
+      opacity:.22; filter:contrast(120%) brightness(90%);
+    }
+    /* Gradient veil to increase readability */
+    .veil{
+      position:fixed; inset:0; z-index:-1;
+      background:radial-gradient(1200px 600px at 60% -10%, rgba(24,176,122,.08), transparent 60%),
+                 linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.35));
+    }
+
+    /* Topbar */
+    .top{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(1.1) blur(10px);
+      background:rgba(7,10,12,.55); border-bottom:1px solid var(--edge);
+    }
+    .container{max-width:1180px; margin:auto; padding:0 20px}
+    .top-row{display:flex; gap:20px; align-items:center; height:64px}
+    .dot{width:10px; height:10px; border-radius:50%; background:#39e39e; box-shadow:0 0 8px #39e39e}
+    .brand{font-weight:700; letter-spacing:.2px}
+    .badge{padding:6px 12px; border:1px solid var(--edge); border-radius:999px; color:#d9e1e8; font-size:.88rem; background:#0e141a}
+    nav{display:flex; gap:18px; margin-left:10px}
+    nav a{
+      color:#cdd6dd; text-decoration:none; font-weight:600; letter-spacing:.2px;
+      padding:10px 6px; border-bottom:2px solid transparent;
+    }
+    nav a.active, nav a:hover{color:#fff; border-bottom-color:#2ee3ab}
+
+    .lang{margin-left:auto; display:flex; gap:8px}
+    .pill{padding:7px 12px; border:1px solid var(--edge); border-radius:999px; color:#d5dee6; background:#10161c; cursor:pointer}
+    .pill.on{background:#e9fdf6; color:#0a1317; border-color:#79efcc}
+
+    /* Sections */
+    main{padding:28px 0 80px}
+    section{scroll-margin-top:88px; padding:28px 0}
+    h1{font-size:2.6rem; line-height:1.2; margin:0 0 10px}
+    h2{font-size:2rem; margin:0 0 8px}
+    p.lead{font-size:1.12rem; color:#cfd7de}
+    .grid{display:grid; gap:22px}
+    @media(min-width:960px){ .grid-2{grid-template-columns:1.15fr .85fr} }
+
+    .card{
+      background:rgba(16,22,28,.72);
+      border:1px solid var(--edge);
+      border-radius:18px; padding:18px 18px 16px;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+    }
+    .soft{background:rgba(12,16,20,.7); border:1px solid var(--edge); border-radius:22px; padding:20px}
+    .muted{color:var(--muted)}
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:12px 18px; border-radius:14px; font-weight:700;
+      color:#061316; background:var(--brand); text-decoration:none;
+      box-shadow:0 6px 18px rgba(34,228,163,.25);
+    }
+    .btn-outline{background:var(--btn); color:#e9f4ff; border:1px solid var(--edge)}
+    .btn-outline:hover{background:var(--btnh)}
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{background:var(--chip); color:#d3dee7; border:1px solid var(--edge); padding:6px 10px; border-radius:999px; font-weight:600}
+
+    /* Profile box */
+    .profile{
+      display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center;
+    }
+    .avatar{
+      --s:132px;
+      width:var(--s); height:var(--s); border-radius:50%;
+      background:#0b1217 url("files/profile.jpg") center/cover no-repeat;
+      position:relative; box-shadow:0 0 0 3px #0f1b21 inset;
+    }
+    .avatar:before{
+      content:""; position:absolute; inset:-6px; border-radius:50%;
+      border:3px solid rgba(46,227,171,.9); filter:drop-shadow(0 0 16px rgba(46,227,171,.5));
+      animation:ring 4s ease-in-out infinite;
+    }
+    @keyframes ring{0%,100%{opacity:.8} 50%{opacity:.35}}
+
+    /* Subtabs */
+    .subtabs{display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 12px}
+    .tabbtn{
+      padding:8px 12px; border-radius:8px; border:1px solid var(--edge);
+      background:#0e151b; color:#d6dee6; font-weight:700; cursor:pointer;
+    }
+    .tabbtn.active{background:#113121; border-color:#2ee3ab; color:#bff7e6}
+    .subpage{display:none}
+    .subpage.active{display:block; animation:fade .25s ease}
+    @keyframes fade{from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none}}
+
+    /* Language bars (within Mobility/Languages) */
+    .langgrid{display:grid; gap:10px}
+    .langcard{background:#0e151b; border:1px solid var(--edge); border-radius:12px; padding:12px 14px}
+    .bar{height:8px; background:#0b1318; border:1px solid #1b2630; border-radius:999px; overflow:hidden}
+    .bar span{display:block; height:100%; background:linear-gradient(90deg,#16c98d,#2ee3ab)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--edge); color:#a8b1b8; padding:24px 0; text-align:center}
   </style>
 </head>
 <body>
-  <header>
-    <div class="top">
-      <div class="brand"><span class="dot"></span><h1>Mohamed Alae Bahrar</h1><span class="chip" id="role">Student Engineer</span></div>
-      <nav id="nav">
-        <a href="#home" data-page="home" class="active">HOME</a>
-        <a href="#engineering" data-page="engineering">ENGINEERING COURSE</a>
-        <a href="#mobility" data-page="mobility">INTERNATIONAL MOBILITY</a>
-        <a href="#career" data-page="career">CAREER</a>
-        <a href="#civic" data-page="civic">CIVIC ENGAGEMENT & LEADERSHIP</a>
-        <a href="#activities" data-page="activities">OTHER ACTIVITIES</a>
+  <div class="bg"></div>
+  <div class="veil"></div>
+
+  <header class="top">
+    <div class="container top-row">
+      <div class="dot"></div>
+      <div class="brand">Mohamed Alae Bahrar</div>
+      <span class="badge">Student Engineer</span>
+
+      <nav>
+        <a class="active" href="#home">HOME</a>
+        <a href="#eng">ENGINEERING COURSE</a>
+        <a href="#mobility">INTERNATIONAL MOBILITY</a>
+        <a href="#career">CAREER</a>
+        <a href="#civic">CIVIC ENGAGEMENT &amp; LEADERSHIP</a>
+        <a href="#other">OTHER ACTIVITIES</a>
       </nav>
-      <div class="lang" aria-label="Language selector">
-        <button id="btn-fr" type="button">FR</button>
-        <button id="btn-en" type="button" class="active">EN</button>
+
+      <div class="lang">
+        <button class="pill" id="fr">FR</button>
+        <button class="pill on" id="en">EN</button>
       </div>
     </div>
   </header>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <div class="hero">
-      <div>
-        <span class="chip" id="chip-loc">Toulouse, France</span>
-        <div class="title" id="hero-title">Welcome 👋</div>
-        <p class="lead" id="hero-lead">I love learning, improving and pushing my limits. I fully commit to what I undertake.</p>
-        <div class="actions">
-          <a class="btn primary" id="cta-contact" href="mailto:mohamedalaebahrar@gmail.com">Contact me</a>
-          <a class="btn" href="files/CV_FR.pdf" download id="cta-cv-fr">CV in French</a>
-          <a class="btn" href="files/CV_EN.pdf" download id="cta-cv-en">CV in English</a>
+  <main class="container">
+    <!-- HOME -->
+    <section id="home">
+      <div class="grid grid-2">
+        <div>
+          <div class="chip">Toulouse, France</div>
+          <h1>Welcome 👋</h1>
+          <p class="lead">
+            I love learning, improving and pushing my limits. I fully commit to what I undertake.
+          </p>
+          <div class="chips" style="margin-top:14px">
+            <a class="btn" href="#contact">Contact me</a>
+            <a class="btn btn-outline" href="files/CV_FR.pdf" target="_blank" rel="noopener">CV in French</a>
+            <a class="btn btn-outline" href="files/CV_EN.pdf" target="_blank" rel="noopener">CV in English</a>
+          </div>
         </div>
-      </div>
-      <div class="hero-card">
-        <div style="display:flex;gap:16px;align-items:center">
-          <img src="files/profile.jpg" alt="Profile picture" class="avatar"/>
-          <div>
-            <h3 style="margin:0 0 8px">Links</h3>
-            <p class="mono" style="margin:0 0 8px">Email: <a href="mailto:mohamedalaebahrar@gmail.com">mohamedalaebahrar@gmail.com</a><br>
-            Tel: <a href="tel:+33744241848">+33 7 44 24 18 48</a></p>
-            <div class="actions">
-              <a class="btn" href="https://fr.linkedin.com/in/mohamed-alae-bahrar-07890b35b" target="_blank" rel="noopener">LinkedIn</a>
-              <a class="btn" href="#" target="_blank">GitHub</a>
+
+        <div class="card">
+          <div class="profile">
+            <div class="avatar" title="Profile photo"></div>
+            <div>
+              <h3 style="margin:0 0 6px">Links</h3>
+              <div class="muted">Email: mohamedalaebahrar@gmail.com</div>
+              <div class="muted">Tel: +33 7 44 24 18 48</div>
+              <div class="chips" style="margin-top:10px">
+                <a class="btn btn-outline" href="https://fr.linkedin.com/in/mohamed-alae-bahrar-07890b35b" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="btn btn-outline" href="https://github.com/exosfounder-ui" target="_blank" rel="noopener">GitHub</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- PAGES -->
-    <section id="home" class="page active">
-      <div class="card">
-        <h2>Overview</h2>
-        <p>Thanks for visiting my ePortfolio. I’m an engineering student at ENSEEIHT (3EA). This website gathers my curriculum, international mobility goals, civic involvement and activities. Feel free to download my CVs (FR/EN) and reach out.</p>
+      <!-- Overview card -->
+      <div class="card" style="margin-top:24px">
+        <h2 style="margin:0 0 6px">Overview</h2>
+        <p class="muted" style="margin:0">
+          Thanks for visiting my ePortfolio. I’m an engineering student at ENSEEIHT (3EA).
+          This website gathers my curriculum, international mobility goals, civic involvement and activities.
+          Feel free to download my CVs (FR/EN) and reach out.
+        </p>
       </div>
     </section>
 
-    <section id="engineering" class="page">
-      <div class="card">
-        <h2>Engineering Course</h2>
-        <p>I’m currently studying for a diploma in electrical engineering. We follow a common core covering all the subjects; this page will be updated each semester.</p>
+    <!-- ENGINEERING -->
+    <section id="eng">
+      <h2>Engineering Course</h2>
+      <p class="lead">I’m currently studying for a diploma in electrical engineering. We follow a common core; this page is updated each semester.</p>
 
-        <div class=\"subtabs\" data-group=\"eng\">
-          <button class=\"tabbtn active\" data-sub=\"eng-courses\">Courses (S5)</button>
-          <button class=\"tabbtn\" data-sub=\"eng-projects\">Projects (à venir)</button>
-          <button class=\"tabbtn\" data-sub=\"eng-productions\">Productions (à venir)</button>
-        </div>
+      <div class="subtabs" data-group="eng">
+        <button class="tabbtn active" data-sub="eng-courses">Courses (S5)</button>
+        <button class="tabbtn" data-sub="eng-projects">Projects (à venir)</button>
+        <button class="tabbtn" data-sub="eng-productions">Productions (à venir)</button>
+      </div>
 
-        <div class=\"subpage active\" id=\"eng-courses\">
-          <div class=\"card\" style=\"margin-top:10px\">
-            <h3>S5 (current)</h3>
-            <ul>
-              <li>Innovation Practices</li>
-              <li>Experiments for business and managerial decisions</li>
-              <li>Project Management</li>
-              <li>Innovation Strategy</li>
-              <li>Entrepreneurship</li>
-              <li>Finance</li>
-            </ul>
-          </div>
+      <div class="subpage active" id="eng-courses">
+        <div class="card">
+          <h3 style="margin-top:0">S5 (current)</h3>
+          <ul style="margin:8px 0 0">
+            <li>Innovation Practices</li>
+            <li>Experiments for business and managerial decisions</li>
+            <li>Project Management</li>
+            <li>Innovation Strategy</li>
+            <li>Entrepreneurship</li>
+            <li>Finance</li>
+          </ul>
         </div>
+      </div>
 
-        <div class=\"subpage\" id=\"eng-projects\">
-          <div class=\"card\" style=\"margin-top:10px\"><p>Academic projects will be listed here as they are completed. <em>À venir.</em></p></div>
-        </div>
-        <div class=\"subpage\" id=\"eng-productions\">
-          <div class="card" style="margin-top:10px"><p>Deliverables, reports and code repositories. <em>À venir.</em></p></div>
-        </div>
+      <div class="subpage" id="eng-projects">
+        <div class="card"><p class="muted" style="margin:4px 0 0">Academic projects will be listed here as they are completed. <em>À venir.</em></p></div>
+      </div>
+
+      <div class="subpage" id="eng-productions">
+        <div class="card"><p class="muted" style="margin:4px 0 0">Reports, posters and deliverables will be added. <em>À venir.</em></p></div>
       </div>
     </section>
 
-    <section id="mobility" class="page">
-      <div class="card">
-        <h2>International Mobility</h2>
-        <p>As an international student in France, I value cultural openness and multilingual environments. Mobility opportunities include Europe (ERASMUS), Canada (Montréal, Québec, Sherbrooke) and the USA (Georgia Tech), via ENSEEIHT’s exchange and double‑degree agreements.</p>
+    <!-- INTERNATIONAL MOBILITY -->
+    <section id="mobility">
+      <h2>International Mobility</h2>
+      <p class="lead">
+        As an international student in France, I value cultural openness and multilingual environments. Mobility
+        opportunities include Europe (ERASMUS), Canada (Montréal, Québec, Sherbrooke) and the USA (Georgia Tech), via ENSEEIHT’s exchange and double-degree agreements.
+      </p>
 
-        <div class=\"subtabs\" data-group=\"mob\">
-          <button class=\"tabbtn active\" data-sub=\"mob-overview\">Overview</button>
-          <button class=\"tabbtn\" data-sub=\"mob-languages\">Languages</button>
-          <button class=\"tabbtn\" data-sub=\"mob-lv2\">LV2 (Spanish)</button>
-          <button class=\"tabbtn\" data-sub=\"mob-pce\">PCE / Exchange (à venir)</button>
-        </div>
+      <div class="subtabs" data-group="mob">
+        <button class="tabbtn active" data-sub="mob-overview">Overview</button>
+        <button class="tabbtn" data-sub="mob-languages">Languages</button>
+        <button class="tabbtn" data-sub="mob-lv2">LV2 (Spanish)</button>
+        <button class="tabbtn" data-sub="mob-pce">PCE / Exchange (à venir)</button>
+      </div>
 
-        <div class=\"subpage active\" id=\"mob-overview\">
-          <div class="card" style="margin-top:10px"><p>I plan to apply for exchange programs in the next semesters. Priority tracks: EU ERASMUS and Canada.</p></div>
+      <div class="subpage active" id="mob-overview">
+        <div class="card">
+          <p class="muted" style="margin:0">
+            I plan to apply for exchange programs in the next semesters. Priority tracks: EU ERASMUS and Canada.
+          </p>
         </div>
-        <div class=\"subpage\" id=\"mob-languages\">
-          <div class=\"langgrid\">
-            <div class=\"langcard\"><h3 style=\"margin-top:0\">Arabic <small style=\"opacity:.7\">— Native</small></h3><div class=\"bar\"><span style=\"width:100%\"></span></div></div>
-            <div class=\"langcard\"><h3 style=\"margin-top:0\">French <small style=\"opacity:.7\">— Advanced</small></h3><div class=\"bar\"><span style=\"width:85%\"></span></div></div>
-            <div class=\"langcard\"><h3 style=\"margin-top:0\">English <small style=\"opacity:.7\">— Advanced</small></h3><div class=\"bar\"><span style=\"width:85%\"></span></div></div>
-            <div class=\"langcard\"><h3 style=\"margin-top:0\">Spanish (LV2) <small style=\"opacity:.7\">— Basic, in progress</small></h3><div class=\"bar\"><span style=\"width:40%\"></span></div></div>
-          </div>
+      </div>
+
+      <!-- MOVED HERE: LANGUAGES (with the 4 bars) -->
+      <div class="subpage" id="mob-languages">
+        <div class="langgrid">
+          <div class="langcard"><h3 style="margin:0 0 6px">Arabic <small class="muted">— Native</small></h3><div class="bar"><span style="width:100%"></span></div></div>
+          <div class="langcard"><h3 style="margin:0 0 6px">French <small class="muted">— Advanced</small></h3><div class="bar"><span style="width:86%"></span></div></div>
+          <div class="langcard"><h3 style="margin:0 0 6px">English <small class="muted">— Advanced</small></h3><div class="bar"><span style="width:86%"></span></div></div>
+          <div class="langcard"><h3 style="margin:0 0 6px">Spanish (LV2) <small class="muted">— Basic, in progress</small></h3><div class="bar"><span style="width:42%"></span></div></div>
         </div>
-        <div class=\"subpage\" id=\"mob-lv2\">
-          <div class=\"card\" style=\"margin-top:10px\">
-            <h3>LV2 – Spanish</h3>
-            <p>Goal: improve to B1–B2 for academic and mobility purposes. Practice plan: weekly speaking groups + focused grammar/vocab sets.</p>
-          </div>
+      </div>
+
+      <div class="subpage" id="mob-lv2">
+        <div class="card">
+          <h3 style="margin:0 0 6px">LV2 – Spanish</h3>
+          <p class="muted" style="margin:0">Goal: improve to B1–B2 for academic and mobility purposes. Practice plan: weekly speaking groups + focused grammar/vocab sets.</p>
         </div>
-        <div class=\"subpage\" id=\"mob-pce\">
-          <div class="card" style="margin-top:10px"><p>Documents and selections for PCE / exchange applications will be gathered here. <em>À venir.</em></p></div>
-        </div>
+      </div>
+
+      <div class="subpage" id="mob-pce">
+        <div class="card"><p class="muted" style="margin:0">Documents and selections for PCE / exchange applications will be gathered here. <em>À venir.</em></p></div>
       </div>
     </section>
 
-    <section id="career" class="page">
-      <div class="card">
-        <h2>Career</h2>
-        <p>My career plan combines engineering rigor and data‑driven thinking. I enjoy applied math, signal processing and systems, and I’m attracted to projects where optimization meets real‑world impact.</p>
-        <div class="actions" style="margin-top:10px">
-          <a class="btn" href="files/CV_FR.pdf" download>📄 CV – French</a>
-          <a class="btn" href="files/CV_EN.pdf" download>📄 CV – English</a>
-        </div>
+    <!-- CAREER -->
+    <section id="career">
+      <h2>Career</h2>
+      <div class="subtabs" data-group="car">
+        <button class="tabbtn active" data-sub="car-about">About me</button>
+        <button class="tabbtn" data-sub="car-intern">Internships (à venir)</button>
+        <button class="tabbtn" data-sub="car-pep">PEP (à venir)</button>
+      </div>
 
-        <div class="subtabs" data-group="car">
-          <button class="tabbtn active" data-sub="car-about">About me</button>
-          <button class="tabbtn" data-sub="car-intern">Internships (à venir)</button>
-          <button class="tabbtn" data-sub="car-pep">PEP (à venir)</button>
+      <div class="subpage active" id="car-about">
+        <div class="card">
+          <video controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--edge); background:#000">
+            <source src="files/intro.mp4" type="video/mp4"/>
+            Your browser does not support the video tag.
+          </video>
         </div>
+      </div>
 
-        <div class="subpage active" id="car-about">
-          <div class="card" style="margin-top:10px">
-            <h3>About me</h3>
-            <video controls preload="metadata" src="files/intro.mp4" style="max-width:420px;width:100%;border-radius:12px;border:1px solid #1c2332"></video>
-          </div>
-        </div>
-        <div class="subpage" id="car-intern">
-          <div class="card" style="margin-top:10px"><p>Internship experiences and reports will appear here. <em>À venir.</em></p></div>
-        </div>
-        <div class="subpage" id="car-pep">
-          <div class="card" style="margin-top:10px"><p>Personal/Professional Project (PEP): objectives, timeline and deliverables. <em>À venir.</em></p></div>
-        </div>
+      <div class="subpage" id="car-intern">
+        <div class="card"><p class="muted" style="margin:0">Internship experience and deliverables will be published here. <em>À venir.</em></p></div>
+      </div>
+
+      <div class="subpage" id="car-pep">
+        <div class="card"><p class="muted" style="margin:0">Personal professional project (PEP) materials will be added. <em>À venir.</em></p></div>
       </div>
     </section>
 
-    <section id="civic" class="page">
+    <!-- CIVIC -->
+    <section id="civic">
+      <h2>Civic Engagement &amp; Leadership</h2>
       <div class="card">
-        <h2>Civic Engagement & Leadership</h2>
-        <p>I believe in useful, concrete actions. Recent involvements include:</p>
-        <ul>
-          <li>Peer‑mentoring for new students (orientation, study methods, exam prep).</li>
-          <li>Health‑quality awareness inspired by MQSS training (risk mapping basics, patient journey focus).</li>
-          <li>Student community support: organizing revision groups and sports activities to promote well‑being.</li>
-        </ul>
-        <p>Leadership to me means clarity, responsibility and service to the team. I plan to volunteer in education or digital inclusion when possible.</p>
+        <p class="muted" style="margin:0">Activities, volunteering, and leadership experiences will be listed here. <em>À venir.</em></p>
       </div>
     </section>
 
-    <section id="activities" class="page">
+    <!-- OTHER -->
+    <section id="other">
+      <h2>Other Activities</h2>
       <div class="card">
-        <h2>Other Activities</h2>
-        <div class="cols">
-          <div>
-            <h3>Sports</h3>
-            <p>Football, swimming and cycling help me keep discipline and balance. I also train strength 4–5 times/week.</p>
-            <h3>Music</h3>
-            <p>Guitar is my creative space. My TIPE explores a probabilistic model to optimize the emotional impact of chord transitions.</p>
-          </div>
-          <div>
-            <h3>Side projects</h3>
-            <ul>
-              <li>Optical cryptography with fractal holography (FFT, PSNR/SSIM).</li>
-              <li>Small C game (Snake): menus, movement logic, and scoring.</li>
-            </ul>
-            <p>Curiosity drives me to mix electronics, math and software.</p>
-          </div>
+        <p class="muted" style="margin:0">Sport, music (guitar), and personal interests. <em>À venir.</em></p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p style="margin:6px 0 12px">I’m open to projects, internships and collaborations (data, electronics, optimization, music).</p>
+        <div class="chips">
+          <a class="btn btn-outline" href="mailto:mohamedalaebahrar@gmail.com">mohamedalaebahrar@gmail.com</a>
+          <a class="btn btn-outline" href="tel:+33744241848">+33 7 44 24 18 48</a>
+          <span class="chip">Toulouse, France</span>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>© <span id="year"></span> – Mohamed Alae Bahrar</footer>
+  <footer>
+    © <span id="y"></span> – Mohamed Alae Bahrar
+  </footer>
 
   <script>
-    const $=(s,a=false)=>a?document.querySelectorAll(s):document.querySelector(s);
-    const pages=$('section.page',true),links=$('nav a',true);
-    function show(p){pages.forEach(x=>x.classList.toggle('active',x.id===p));links.forEach(a=>a.classList.toggle('active',a.dataset.page===p));if(location.hash!==`#${p}`)history.replaceState(null,'',`#${p}`);window.scrollTo({top:0,behavior:'smooth'});} 
-    links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();show(a.dataset.page)}));
-    window.addEventListener('hashchange',()=>{const p=location.hash.slice(1)||'home';show(p)});show(location.hash.slice(1)||'home');
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Subtabs (scoped per group)
+    // simple language pill toggle (visual only)
+    const fr = document.getElementById('fr'), en = document.getElementById('en');
+    fr.addEventListener('click',()=>{fr.classList.add('on'); en.classList.remove('on')});
+    en.addEventListener('click',()=>{en.classList.add('on'); fr.classList.remove('on')});
+
+    // subtab system (works per group)
     document.querySelectorAll('.subtabs').forEach(group=>{
-      const id=group.getAttribute('data-group');
-      const buttons=group.querySelectorAll('.tabbtn');
-      buttons.forEach(btn=>btn.addEventListener('click',()=>{
-        // toggle active button
-        buttons.forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        // hide all subpages in this section
-        const container=group.parentElement; // the card
-        container.querySelectorAll('.subpage').forEach(sp=>sp.classList.remove('active'));
-        // show the requested one
-        const targetId=btn.dataset.sub;
-        const el=document.getElementById(targetId);
-        if(el) el.classList.add('active');
-      }));
+      group.addEventListener('click', (e)=>{
+        const b = e.target.closest('.tabbtn'); if(!b) return;
+        const subId = b.dataset.sub;
+        // buttons
+        group.querySelectorAll('.tabbtn').forEach(x=>x.classList.toggle('active', x===b));
+        // pages
+        const sec = group.parentElement; // the section containing subtabs + pages
+        sec.querySelectorAll('.subpage').forEach(p=>p.classList.toggle('active', p.id===subId));
+      });
     });
-
-    // Simple i18n
-    const t={en:{role:'Student Engineer',loc:'Toulouse, France',welcome:'Welcome 👋',lead:'I love learning, improving and pushing my limits. I fully commit to what I undertake.',cvfr:'CV in French',cven:'CV in English',contact:'Contact me'},fr:{role:'Étudiant ingénieur',loc:'Toulouse, France',welcome:'Bienvenue 👋',lead:"J’aime apprendre, évoluer et dépasser mes limites. Je m’investis pleinement dans ce que j’entreprends.",cvfr:'CV – Français',cven:'CV – Anglais',contact:'Me contacter'}};
-    const setLang=L=>{document.getElementById('role').textContent=t[L].role;document.getElementById('chip-loc').textContent=t[L].loc;document.getElementById('hero-title').textContent=t[L].welcome;document.getElementById('hero-lead').textContent=t[L].lead;document.getElementById('cta-cv-fr').textContent=t[L].cvfr;document.getElementById('cta-cv-en').textContent=t[L].cven;document.getElementById('cta-contact').textContent=t[L].contact;document.getElementById('btn-en').classList.toggle('active',L==='en');document.getElementById('btn-fr').classList.toggle('active',L==='fr');document.documentElement.lang=L};
-    document.getElementById('btn-en').onclick=()=>setLang('en');
-    document.getElementById('btn-fr').onclick=()=>setLang('fr');
-    setLang('en');
-
-    document.getElementById('year').textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
-
-
