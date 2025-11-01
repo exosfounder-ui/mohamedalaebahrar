@@ -289,7 +289,7 @@
     });
 
     // Simple i18n
-    const t={en:{role:'Student Engineer',loc:'Toulouse, France',welcome:'Welcome 👋',lead:'I love learning, improving and pushing my limits. I fully commit to what I undertake.',cvfr:'CV in French',cven:'CV in English',contact:'Contact me'},fr:{role:'Étudiant ingénieur',loc:'Toulouse, France',welcome:'Bienvenue 👋',lead:"J’aime apprendre, évoluer et dépasser mes limites. Je m’investis pleinement dans ce que j’entreprends.",cvfr:'CV – Français',cven:'CV – Anglais',contact:'Me contacter'}};
+    const t={en:{role:'Student Engineer',loc:'Toulouse, France',welcome:'Welcome 👋',lead:'I’m Mohamed Alae Bahrar, a Moroccan engineering student passionate about electronics, mathematics, and innovation. After two intensive years of preparatory classes (MPSI–MP) at the Lycée d’Excellence Mohamed VI in Casablanca, I’m now studying at ENSEEIHT Toulouse, specializing in Electronics, Electrical Engineering, and Automation (EEA). I aim to deepen my skills and contribute to creating smarter, more connected technologies.',cvfr:'CV in French',cven:'CV in English',contact:'Contact me'},fr:{role:'Étudiant ingénieur',loc:'Toulouse, France',welcome:'Bienvenue 👋',lead:"J’aime apprendre, évoluer et dépasser mes limites. Je m’investis pleinement dans ce que j’entreprends.",cvfr:'CV – Français',cven:'CV – Anglais',contact:'Me contacter'}};
     const setLang=L=>{document.getElementById('role').textContent=t[L].role;document.getElementById('chip-loc').textContent=t[L].loc;document.getElementById('hero-title').textContent=t[L].welcome;document.getElementById('hero-lead').textContent=t[L].lead;document.getElementById('cta-cv-fr').textContent=t[L].cvfr;document.getElementById('cta-cv-en').textContent=t[L].cven;document.getElementById('cta-contact').textContent=t[L].contact;document.getElementById('btn-en').classList.toggle('active',L==='en');document.getElementById('btn-fr').classList.toggle('active',L==='fr');document.documentElement.lang=L};
     document.getElementById('btn-en').onclick=()=>setLang('en');
     document.getElementById('btn-fr').onclick=()=>setLang('fr');
@@ -299,6 +299,7 @@
   </script>
 </body>
 </html>
+
 
 
 
